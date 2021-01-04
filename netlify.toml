@@ -1,4 +1,5 @@
 [build]
+  publish = "/opt/build/repo/public/"
   CI = "gatsby build"
   functions = "lambda"
 [build.environment]
