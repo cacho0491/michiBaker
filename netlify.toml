@@ -1,5 +1,5 @@
 [build]
-  publish = "michiBaker/public"
+  publish = "/public"
   CI = "npm run build"
   functions = "lambda"
 [build.environment]
