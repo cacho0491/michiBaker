@@ -54,14 +54,13 @@ collections:
           name: "steps",
           widget: "list",
           allow_add: true,
-          default: [""],
+          default: ["1"],
         }
       - {
           label: "Ingredients",
           name: "ingredients",
           widget: "list",
           allow_add: true,
-          default: [""],
         }
 
   - name: "pages"
