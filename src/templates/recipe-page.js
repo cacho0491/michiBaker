@@ -25,14 +25,16 @@ export const RecipePageTemplate = ({
         <h3>Instructions</h3>
         <div className={styles.recipeSteps}>
           <ul>
-            {steps.map((step, index) => {
-              return (
-                <li>
-                  <h5>Step {index + 1}</h5>
-                  <p>{step}</p>
-                </li>
-              );
-            })}
+            {steps
+              ? steps.map((step, index) => {
+                  return (
+                    <li>
+                      <h5>Step {index + 1}</h5>
+                      <p>{step}</p>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
       </div>
@@ -40,15 +42,15 @@ export const RecipePageTemplate = ({
         <h3>Ingredients</h3>
         <div>
           <ul>
-            {ingredients.map((ingredient) => {
-              return (
-                <li>
-                  <p>{ingredient}</p>
-                </li>
-              );
-            })}
-
-            <hr />
+            {ingredients
+              ? ingredients.map((ingredient) => {
+                  return (
+                    <li>
+                      <p>{ingredient}</p>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
       </div>
