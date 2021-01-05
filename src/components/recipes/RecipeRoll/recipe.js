@@ -1,34 +1,41 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  Typography,
-  Button,
-  makeStyles,
-} from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 300,
-  },
-}));
+import styles from "./recipe.module.css";
+// import {
+//   Card,
+//   CardContent,
+//   CardActions,
+//   CardHeader,
+//   CardMedia,
+//   Typography,
+//   Button,
+// } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core/styles";
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     maxWidth: 300,
+//   },
+// }));
 
 const Recipe = (props) => {
-  const classes = useStyles();
+  //const classes = useStyles();
   return (
-    <Card className={classes.root}>
-      <CardHeader title={props.title} subheader={props.dateCreated} />
-      <CardMedia />
-      <CardContent>
-        <Typography>{props.description}</Typography>
-      </CardContent>
-      <CardActions>
-        <Button>Read More</Button>
-      </CardActions>
-    </Card>
+    <div className={styles.recipe}>
+      <h1>{props.title}</h1>
+      <h4>{props.dateCreated}</h4>
+      <p>{props.description}</p>
+    </div>
+    // <Card className={classes.root}>
+    //   <CardHeader title={props.title} subheader={props.dateCreated} />
+    //   <CardMedia />
+    //   <CardContent>
+    //     <Typography>{props.description}</Typography>
+    //   </CardContent>
+    //   <CardActions>
+    //     <Button>Read More</Button>
+    //   </CardActions>
+    // </Card>
   );
 };
 
