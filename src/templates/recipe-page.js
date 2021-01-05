@@ -58,7 +58,7 @@ import photo from "../../public/img/products-grid1.jpg";
 //   </section>;
 // };
 
-const RecipePost = () => {
+const RecipePost = (props) => {
   //const { markdownRemark: post } = data;
 
   return (
@@ -67,8 +67,8 @@ const RecipePost = () => {
         <div className={styles.recipeTop}>
           <img src={photo} />
           <div className={styles.recipeInfo}>
-            <h1>{data.markdownRemark.frontmatter.title}</h1>
-            <p>{data.markdownRemark.frontmatter.description}</p>
+            <h1>{props.data.markdownRemark.frontmatter.title}</h1>
+            <p>{props.data.markdownRemark.frontmatter.description}</p>
           </div>
         </div>
         <div className={styles.recipeContent}>
@@ -76,15 +76,17 @@ const RecipePost = () => {
             <h3>Instructions</h3>
             <div className={styles.recipeSteps}>
               <ul>
-                {data.markdownRemark.frontmatter.steps
-                  ? data.markdownRemark.frontmatter.steps.map((step, index) => {
-                      return (
-                        <li>
-                          <h5>Step {index + 1}</h5>
-                          <p>{step}</p>
-                        </li>
-                      );
-                    })
+                {props.data.markdownRemark.frontmatter.steps
+                  ? props.data.markdownRemark.frontmatter.steps.map(
+                      (step, index) => {
+                        return (
+                          <li>
+                            <h5>Step {index + 1}</h5>
+                            <p>{step}</p>
+                          </li>
+                        );
+                      }
+                    )
                   : null}
               </ul>
             </div>
@@ -93,8 +95,8 @@ const RecipePost = () => {
             <h3>Ingredients</h3>
             <div>
               <ul>
-                {data.markdownRemark.frontmatter.ingredients
-                  ? data.markdownRemark.frontmatter.ingredients.map(
+                {props.data.markdownRemark.frontmatter.ingredients
+                  ? props.data.markdownRemark.frontmatter.ingredients.map(
                       (ingredient) => {
                         return (
                           <li>
