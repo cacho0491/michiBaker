@@ -34,7 +34,7 @@ collections:
 
   - name: "recipe"
     label: "Recipe"
-    folder: "src/pages/recipe"
+    folder: "src/pages/recipes"
     create: true
     slug: "{{slug}}"
     fields:
@@ -54,13 +54,7 @@ collections:
           widget: "list",
           allow_add: true,
         }
-      - {
-          label: "Steps",
-          name: "steps",
-          widget: "list",
-          allow_add: true,
-          default: ["1"],
-        }
+      - { label: "Steps", name: "steps", widget: "list", allow_add: true }
 
   - name: "pages"
     label: "Pages"
