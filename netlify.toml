@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  CI = "npm run build"
+  CI = "gatsby build"
   functions = "lambda"
 [build.environment]
   NODE_VERSION = "12"
