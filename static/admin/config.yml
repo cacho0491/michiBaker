@@ -42,7 +42,7 @@ collections:
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "recipe-post",
+          default: "recipe-page",
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -55,7 +55,7 @@ collections:
           fields:
             [
               { label: Name, name: name, widget: string },
-              { label: Quantity, name: qunatity, widget: string },
+              { label: Quantity, name: quantity, widget: string },
             ],
         }
       - {

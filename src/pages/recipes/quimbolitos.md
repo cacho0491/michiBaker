@@ -8,19 +8,19 @@ description: Los quimbolitos son pasteles, propios del Ecuador y del sur de
   achira.
 ingredients:
   - name: Harina de maiz
-    qunatity: 1 taza
+    quantity: 1 taza
   - name: Harina de trigo
-    qunatity: 1 taza
+    quantity: 1 taza
   - name: Pasas
-    qunatity: 1 taza
+    quantity: 1 taza
   - name: Polvo de hornear
-    qunatity: 1 cdta
+    quantity: 1 cdta
   - name: Queso de mesa/fresco
-    qunatity: 450 g
+    quantity: 450 g
   - name: Aguardiente
-    qunatity: 1 cda
+    quantity: 1 cda
   - name: Huevos
-    qunatity: "9"
+    quantity: "9"
 steps:
   - description: Rallar el queso de mesa finamente
   - description: Separar las claras de las yemas de huevo
