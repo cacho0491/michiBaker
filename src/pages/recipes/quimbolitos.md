@@ -1,5 +1,5 @@
 ---
-templateKey: recipe-post
+templateKey: recipe-page
 title: Quimbolitos
 date: 2021-01-06T06:59:44.951Z
 image: /img/quimbolito.jpg
