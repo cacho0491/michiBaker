@@ -52,9 +52,18 @@ collections:
           label: "Ingredients",
           name: "ingredients",
           widget: "list",
-          allow_add: true,
+          fields:
+            [
+              { label: Name, name: name, widget: string },
+              { label: Quantity, name: qunatity, widget: string },
+            ],
         }
-      - { label: "Steps", name: "steps", widget: "list", allow_add: true }
+      - {
+          label: "Steps",
+          name: "steps",
+          widget: "list",
+          fields: [{ label: Description, name: description, widget: string }],
+        }
 
   - name: "pages"
     label: "Pages"
