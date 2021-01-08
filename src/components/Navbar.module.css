@@ -1,0 +1,36 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+
+.navLinks {
+  display: flex;
+}
+.navLinks a {
+  margin: 0 8px;
+  color: #000;
+  transition: all 0.3s ease;
+}
+.navLinks a:hover {
+  color: orange;
+}
+.navLinks a:hover,
+.navLinks a::after {
+  content: "";
+  border-bottom: 2px solid orange;
+}
+
+.hamburgerMenu {
+  display: none !important;
+}
+
+@media only screen and (max-width: 750px) {
+  .navLinks {
+    display: none;
+  }
+  .hamburgerMenu {
+    display: block !important;
+    margin-left: 0 !important;
+  }
+}

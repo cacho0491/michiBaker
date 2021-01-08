@@ -1,6 +1,6 @@
 .recipes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
   grid-gap: 20px;
-  justify-items: center;
+  justify-content: center;
 }

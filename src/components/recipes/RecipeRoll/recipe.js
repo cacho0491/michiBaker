@@ -22,9 +22,13 @@ const Recipe = (props) => {
   //const classes = useStyles();
   return (
     <div className={styles.recipe}>
-      <h1>{props.title}</h1>
-      <h4>{props.dateCreated}</h4>
-      <p>{props.description}</p>
+      <div className={styles.recipeImg}>
+        <img src={props.image} />
+      </div>
+      <div className={styles.recipeInfo}>
+        <h1>{props.title}</h1>
+        <h4>{props.dateCreated}</h4>
+      </div>
     </div>
     // <Card className={classes.root}>
     //   <CardHeader title={props.title} subheader={props.dateCreated} />

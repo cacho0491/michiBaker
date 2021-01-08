@@ -5,6 +5,7 @@ import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Features from "../components/Features";
 import RecipeRoll from "../components/recipes/recipeRoll";
+import styles from "./index-page.module.css";
 
 export const IndexPageTemplate = ({
   image,
@@ -26,7 +27,10 @@ export const IndexPageTemplate = ({
         backgroundAttachment: `fixed`,
       }}
     >
-      <div
+      <div className={styles.welcomeText}>
+        <h1>Welcome to our recipe bible</h1>
+      </div>
+      {/* <div
         style={{
           display: "flex",
           height: "150px",
@@ -48,7 +52,7 @@ export const IndexPageTemplate = ({
           }}
         >
           Welcome to my recipes
-          {/* {title} */}
+          {title}
         </h1>
         <h3
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
@@ -62,10 +66,11 @@ export const IndexPageTemplate = ({
           }}
         >
           You will love this tasty ideas
-          {/* {subheading} */}
+          {subheading}
         </h3>
-      </div>
+      </div> */}
     </div>
+
     <section className="section section--gradient">
       <div className="container">
         <div className="section">

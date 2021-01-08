@@ -5,6 +5,9 @@ import Recipe from "./RecipeRoll/recipe";
 import { graphql, useStaticQuery } from "gatsby";
 import styles from "./recipeRoll.module.css";
 
+import Img from "gatsby-image";
+import photo from "../../../static/img/quimbolito.jpg";
+
 const RecipeRoll = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -34,7 +37,7 @@ const RecipeRoll = () => {
               <Recipe
                 title={edge.node.frontmatter.title}
                 dateCreated={edge.node.frontmatter.date}
-                description={edge.node.frontmatter.description}
+                image={photo}
               />
             </Link>
           );
