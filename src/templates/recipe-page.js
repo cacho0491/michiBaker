@@ -1,6 +1,6 @@
 import React from "react";
 
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { WiTime12 } from "@react-icons/all-files/wi/WiTime12";
 import { WiTime3 } from "@react-icons/all-files/wi/WiTime3";
 import { BsPeople } from "@react-icons/all-files/bs/BsPeople";
@@ -11,61 +11,7 @@ import photo from "../../public/img/products-grid1.jpg";
 import Img from "gatsby-image";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
-// export const RecipePageTemplate = ({
-//   title,
-//   description,
-//   ingredients,
-//   steps,
-// }) => {
-//   <section className={styles.recipe}>
-//     <div className={styles.recipeTop}>
-//       <img src={photo} />
-//       <div className={styles.recipeInfo}>
-//         <h1>{title}</h1>
-//         <p>{description}</p>
-//       </div>
-//     </div>
-//     <div className={styles.recipeContent}>
-//       <div className={styles.instructions}>
-//         <h3>Instructions</h3>
-//         <div className={styles.recipeSteps}>
-//           <ul>
-//             {steps
-//               ? steps.map((step, index) => {
-//                   return (
-//                     <li>
-//                       <h5>Step {index + 1}</h5>
-//                       <p>{step}</p>
-//                     </li>
-//                   );
-//                 })
-//               : null}
-//           </ul>
-//         </div>
-//       </div>
-//       <div className={styles.ingredients}>
-//         <h3>Ingredients</h3>
-//         <div>
-//           <ul>
-//             {ingredients
-//               ? ingredients.map((ingredient) => {
-//                   return (
-//                     <li>
-//                       <p>{ingredient}</p>
-//                     </li>
-//                   );
-//                 })
-//               : null}
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   </section>;
-// };
-
 const RecipePost = (props) => {
-  //const { markdownRemark: post } = data;
-
   return (
     <Layout>
       <section className={styles.recipe}>
@@ -74,34 +20,46 @@ const RecipePost = (props) => {
             <PreviewCompatibleImage
               imageInfo={props.data.markdownRemark.frontmatter.image}
             />
-            {/* <Img
-              fluid={
-                props.data.markdownRemark.frontmatter.image.childImageSharp
-                  .fluid
-              }
-              alt="quim"
-            /> */}
           </div>
 
           <div className={styles.recipeInfo}>
             <h1>{props.data.markdownRemark.frontmatter.title}</h1>
             <p>{props.data.markdownRemark.frontmatter.description}</p>
-            <div className={styles.cookingInfo}>
-              <div>
-                <WiTime12 />
-                <h5>Prep Time</h5>
-                <h6>10 min</h6>
-              </div>
-              <div>
-                <WiTime3 />
-                <h5>Cook Time</h5>
-                <h6>1 Hour</h6>
-              </div>
-              <div>
-                <BsPeople />
-                <h5>Servings</h5>
-                <h6>4</h6>
-              </div>
+
+            {props.data.markdownRemark.frontmatter.cookingInfo.map(
+              (item, index) => {
+                return (
+                  <div key={index + 1} className={styles.cookingInfo}>
+                    <div>
+                      <WiTime12 />
+                      <h5>Prep Time</h5>
+                      <h6>{item.prepTime}</h6>
+                    </div>
+                    <div>
+                      <WiTime3 />
+                      <h5>Cook Time</h5>
+                      <h6>{item.cookTime}</h6>
+                    </div>
+                    <div>
+                      <BsPeople />
+                      <h5>Servings</h5>
+                      <h6>{item.servings}</h6>
+                    </div>
+                  </div>
+                );
+              }
+            )}
+            <div className={styles.tags}>
+              <h4>Tags: </h4>
+              <ul>
+                {props.data.markdownRemark.frontmatter.tags.map((tag) => {
+                  return (
+                    <Link key={tag} to={`/tags/${tag}`}>
+                      <li>{tag}</li>
+                    </Link>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </div>
@@ -114,7 +72,7 @@ const RecipePost = (props) => {
                   ? props.data.markdownRemark.frontmatter.ingredients.map(
                       (ingredient) => {
                         return (
-                          <li>
+                          <li key={ingredient.name}>
                             <p>
                               <span>{ingredient.quantity}</span>{" "}
                               {ingredient.name}
@@ -135,7 +93,7 @@ const RecipePost = (props) => {
                   ? props.data.markdownRemark.frontmatter.steps.map(
                       (step, index) => {
                         return (
-                          <li>
+                          <li key={index + 1}>
                             <h5>Step {index + 1}</h5>
                             <p>{step.description}</p>
                           </li>
@@ -174,6 +132,11 @@ export const query = graphql`
           }
         }
         description
+        cookingInfo {
+          cookTime
+          prepTime
+          servings
+        }
         ingredients {
           name
           quantity
@@ -181,6 +144,7 @@ export const query = graphql`
         steps {
           description
         }
+        tags
       }
     }
   }

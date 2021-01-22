@@ -1,6 +1,45 @@
+.recipeRoll {
+  display: grid;
+  grid-template-columns: 220px max-content;
+  /* grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr)); */
+  grid-template-rows: min-content;
+  text-align: center;
+}
+
+.glossary {
+  grid-column: 1 / span 1;
+  margin-right: 20px;
+}
+
+.glossaryItem {
+  list-style: none;
+  font-size: 140%;
+  color: #000;
+  margin-bottom: 3px;
+}
+.glossaryItem:hover {
+  color: orangered;
+}
+
 .recipes {
+  grid-column: 2 / span 2;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
-  grid-gap: 20px;
-  justify-content: center;
+  grid-gap: 10px;
+  justify-content: left;
+}
+
+@media only screen and (max-width: 750px) {
+  .recipeRoll {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    justify-content: center;
+  }
+  .recipes {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+  .glossary {
+    display: none;
+  }
 }

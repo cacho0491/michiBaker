@@ -11,8 +11,8 @@ const Footer = class extends React.Component {
   render() {
     return (
       <footer
-        className="footer has-background-black has-text-white-ter"
-        style={{ position: "sticky", bottom: 0 }}
+        className="has-background-black has-text-white-ter"
+        style={{ bottom: 0 }}
       >
         <div className="content has-text-centered">
           <p style={{ fontSize: 30 }}>MichiChef 2021 &copy;</p>

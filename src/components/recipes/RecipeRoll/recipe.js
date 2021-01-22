@@ -1,5 +1,8 @@
 import React from "react";
 
+import PreviewCompatibleImage from "../../PreviewCompatibleImage";
+import Img from "gatsby-image";
+
 import styles from "./recipe.module.css";
 // import {
 //   Card,
@@ -23,7 +26,9 @@ const Recipe = (props) => {
   return (
     <div className={styles.recipe}>
       <div className={styles.recipeImg}>
-        <img src={props.image} />
+        {/* <PreviewCompatibleImage imageInfo={props.image} /> */}
+        <Img fluid={props.image} />
+        {/* <img src={props.image} /> */}
       </div>
       <div className={styles.recipeInfo}>
         <h1>{props.title}</h1>

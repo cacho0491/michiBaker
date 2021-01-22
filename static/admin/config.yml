@@ -37,6 +37,7 @@ collections:
     folder: "src/pages/recipes"
     create: true
     slug: "{{slug}}"
+    add_to_top: true
     fields:
       - {
           label: "Template Key",
@@ -48,6 +49,17 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: Image, name: image, widget: image }
       - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Cooking Information",
+          name: "cookingInfo",
+          widget: "list",
+          fields:
+            [
+              { label: "Preparation Time", name: "prepTime", widget: "string" },
+              { label: "Cooking Time", name: "cookTime", widget: "string" },
+              { label: "Servings", name: "servings", widget: "number" },
+            ],
+        }
       - {
           label: "Ingredients",
           name: "ingredients",
@@ -65,6 +77,7 @@ collections:
           fields:
             [{ label: "Description", name: "description", widget: "string" }],
         }
+      - { label: "Tags", name: "tags", widget: "list" }
 
   - name: "pages"
     label: "Pages"

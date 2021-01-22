@@ -1,0 +1,10 @@
+.tagList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
+  grid-gap: 10px;
+  justify-content: left;
+}
+
+.tagList li {
+  list-style: none;
+}

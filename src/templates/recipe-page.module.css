@@ -80,6 +80,23 @@
 .ingredients li {
   margin-bottom: 7px;
 }
+.tags {
+  display: flex;
+  margin: 10px 0 0 20px;
+}
+
+.tags ul {
+  display: flex;
+  justify-content: center;
+}
+.tags li {
+  margin: 0 3px;
+  background-color: orangered;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 3px;
+}
 
 /* .instructions {
   grid-column: 1 / span 1;

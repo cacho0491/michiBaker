@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import Features from "../components/Features";
 import RecipeRoll from "../components/recipes/recipeRoll";
 import styles from "./index-page.module.css";
+import Recipe from "../components/recipes/RecipeRoll/recipe";
 
 export const IndexPageTemplate = ({
   image,
@@ -14,135 +15,81 @@ export const IndexPageTemplate = ({
   subheading,
   mainpitch,
   description,
+  recipes,
   intro,
-}) => (
-  <div>
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-      }}
-    >
-      <div className={styles.welcomeText}>
-        <h1>Welcome to our recipe bible</h1>
-      </div>
-      {/* <div
+}) => {
+  const limited = [];
+  recipes.forEach((edge) => {
+    if (edge.node.frontmatter.templateKey === "recipe-page") {
+      limited.push(edge);
+    }
+  });
+  if (limited.length > 3) {
+    limited.length = 3;
+  }
+
+  return (
+    <div>
+      <div
+        className="full-width-image margin-top-0"
         style={{
-          display: "flex",
-          height: "150px",
-          lineHeight: "1",
-          justifyContent: "space-around",
-          alignItems: "left",
-          flexDirection: "column",
+          backgroundImage: `url(${
+            !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+          })`,
+          backgroundPosition: `top left`,
+          backgroundAttachment: `fixed`,
         }}
       >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-            backgroundColor: "rgb(255, 68, 0)",
-            color: "white",
-            lineHeight: "1",
-            padding: "0.25em",
-          }}
-        >
-          Welcome to my recipes
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-            backgroundColor: "rgb(255, 68, 0)",
-            color: "white",
-            lineHeight: "1",
-            padding: "0.25em",
-          }}
-        >
-          You will love this tasty ideas
-          {subheading}
-        </h3>
-      </div> */}
-    </div>
+        <div className={styles.welcomeText}>
+          <h1>Bienvenidos a nuestro libro de recetas</h1>
+        </div>
+      </div>
 
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
+      <section className="section section--gradient">
+        <div className="container">
+          <div className="section">
+            <div className="columns">
+              <div className="column is-10 is-offset-1">
                 <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
+                  <div className="content">
+                    <div className="tile">
+                      <h1 className="title">{mainpitch.title}</h1>
+                    </div>
+                    <div className="tile">
+                      <h3 className="subtitle">{mainpitch.description}</h3>
+                    </div>
                   </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div>
-                  <RecipeRoll />
-                  {/* <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div> */}
-                </div>
-                {/* 
-                
-                
-                RECIPES ROLL
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                */}
-                {/* <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
+                  <div className={styles.recipes}>
+                    {/* <RecipeRoll /> */}
+
+                    {limited.map((recipe) => {
+                      return (
+                        <Link to={recipe.node.fields.slug}>
+                          <Recipe
+                            key={recipe.node.frontmatter.title}
+                            title={recipe.node.frontmatter.title}
+                            dateCreated={recipe.node.frontmatter.date}
+                            image={
+                              recipe.node.frontmatter.image.childImageSharp
+                                .fluid
+                            }
+                          />
+                        </Link>
+                      );
+                    })}
+                    <Link to="/recipes">
+                      <Recipe title="Ver Mas" />
                     </Link>
                   </div>
                 </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
+};
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -150,6 +97,7 @@ IndexPageTemplate.propTypes = {
   heading: PropTypes.string,
   subheading: PropTypes.string,
   mainpitch: PropTypes.object,
+  recipes: PropTypes.array,
   description: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
@@ -158,6 +106,7 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  const { edges } = data.allMarkdownRemark;
 
   return (
     <Layout>
@@ -167,6 +116,7 @@ const IndexPage = ({ data }) => {
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
+        recipes={edges}
         description={frontmatter.description}
         intro={frontmatter.intro}
       />
@@ -177,6 +127,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.object,
+    }),
+    allMarkdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
   }),
@@ -216,6 +169,27 @@ export const pageQuery = graphql`
           }
           heading
           description
+        }
+      }
+    }
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            date(formatString: "DD MMM YYYY")
+            image {
+              childImageSharp {
+                fluid(maxWidth: 526, quality: 92) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            templateKey
+          }
+          fields {
+            slug
+          }
         }
       }
     }

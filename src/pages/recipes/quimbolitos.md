@@ -6,6 +6,10 @@ image: /img/quimbolito.jpg
 description: Los quimbolitos son pasteles, propios del Ecuador y del sur de
   Colombia elaborados con harina de maíz, cocidos al vapor envueltos en hojas de
   achira.
+cookingInfo:
+  - prepTime: 10 min
+    cookTime: 20 min
+    servings: 4
 ingredients:
   - name: Harina de maiz
     quantity: 1 taza
@@ -29,4 +33,7 @@ steps:
   - description: Agregar el licor, las claras, pasas, azucar hasta obtener una
       mezcla uniforme
   - description: Colocar 2 cucharadas de mezcla en cada hoja de achira
+tags:
+  - ecuador
+  - tasting
 ---
